@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Post } from "./models/post.model";
-import { API_BASE_URL } from "../core/api-tokens";
+import { API_BASE_URL } from "../core/tokens";
 
 const DEFAULT_POSTS_LIMIT = 10;
 
