@@ -3,9 +3,17 @@
     <h1 class="title">Posts App</h1>
   </mat-toolbar-row>
   <mat-toolbar-row class="row">
-    <div class="subtitle">{{ title() }}</div>
+    <div class="subtitle">{{ $subtitle() }}</div>
   </mat-toolbar-row>
 </mat-toolbar>
+<div class="actions-container">
+    @if (showBack()) {
+        <button extended matButton="outlined" class="back" (click)="back()">
+            <mat-icon>arrow_back</mat-icon>
+            Back
+        </button>
+    }
+</div>
 
 <router-outlet />
 
