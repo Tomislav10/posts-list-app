@@ -1,18 +1,20 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Post } from "./models/post.model";
+import { API_BASE_URL } from "../core/api-tokens";
+
+const DEFAULT_POSTS_LIMIT = 10;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-    private readonly api = 'https://jsonplaceholder.typicode.com';
+    private readonly http = inject(HttpClient);
+    private readonly api = inject(API_BASE_URL);
 
-    constructor(private readonly http: HttpClient) {}
-
-    getPosts(limit = 10): Observable<Post[]> {
-        return this.http.get<Post[]>(`${this.api}/posts`, { params: { _limit: limit } as any });
+    getPosts(limit = DEFAULT_POSTS_LIMIT): Observable<Post[]> {
+        return this.http.get<Post[]>(`${this.api}/posts`, { params: { _limit: String(limit) } });
     }
 
     getPost(id: number): Observable<Post> {

@@ -13,7 +13,7 @@ import { Post } from '../../models/post.model';
 })
 export class PostsListComponent implements OnInit {
   private readonly postsService = inject(PostsService);
-  readonly posts$: Observable<Post[]> = this.postsService.getPosts(10);
+  readonly posts$: Observable<Post[]> = this.postsService.getPosts();
 
   ngOnInit(): void {
     this.posts$.subscribe(posts => {

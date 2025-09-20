@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
 import { PostsService } from '../../posts.service';
@@ -19,6 +19,7 @@ export class PostDetailsComponent {
 
   readonly post$: Observable<Post> = this.route.paramMap.pipe(
     map(params => Number(params.get('id'))),
+    distinctUntilChanged(),
     switchMap(id => this.postsService.getPost(id)),
   );
 
