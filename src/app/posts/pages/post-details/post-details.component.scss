@@ -1,2 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 70px 30px;
+}
+
+.card {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px 30px;
+}
+
+.subtitle {
+  margin-top: 5px;
+  color: rgb(107, 105, 105);
+  line-height: 1.6;
+}
+
+.body {
+  margin-top: 50px;
+  color: var(--mat-sys-on-surface);
+  line-height: 1.6;
+}
 
 
