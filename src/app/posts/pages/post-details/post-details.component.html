@@ -1,15 +1,21 @@
 @let post = post$ | async;
-@if ($loading()) {
+@let loading = $loading();
+@let error = $error();
+
+@if (loading) {
   <div class="container">
     <mat-card appearance="outlined" class="card">
       <mat-card-header>
-        <mat-card-title class="skeleton-line skeleton-title"></mat-card-title>
-        <mat-card-subtitle class="skeleton-line skeleton-subtitle"></mat-card-subtitle>
+        <div class="skeleton-line skeleton-title"></div>
       </mat-card-header>
       <mat-card-content>
-        <p class="skeleton-line skeleton-body"></p>
+        <div class="skeleton-line skeleton-body"></div>
       </mat-card-content>
     </mat-card>
+  </div>
+} @else if (error) {
+  <div class="container">
+    <mat-card appearance="outlined" class="card error">Failed to load post. Please try again.</mat-card>
   </div>
 } @else if (post) {
   <div class="container">

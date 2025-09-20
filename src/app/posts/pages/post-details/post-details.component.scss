@@ -7,7 +7,7 @@
 .card {
   width: 100%;
   max-width: 900px;
-  padding: 30px 30px;
+  padding: 24px 28px;
 }
 
 .subtitle {
@@ -22,13 +22,28 @@
   line-height: 1.6;
 }
 
-.skeleton-line {
+.error {
+  color: var(--mat-sys-error);
+}
+
+.skeleton-line::before {
+  content: '';
+  display: block;
+  height: 100%;
   background: color-mix(in oklab, var(--mat-sys-on-surface) 10%, transparent);
   border-radius: 4px;
 }
 
-.skeleton-title { height: 24px; width: 60%; }
-.skeleton-subtitle { height: 16px; width: 30%; margin-top: 6px; }
-.skeleton-body { height: 14px; width: 100%; }
+.skeleton-title { 
+  height: 24px; 
+  width: 60%; 
+  margin-top: 4px;
+}
+
+.skeleton-body { 
+  height: 14px; 
+  width: 100%; 
+  margin-top: 24px;
+}
 
 

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DEFAULT_POSTS_LIMIT, PostsService } from '../../posts.service';
-import { Observable, defer } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, defer, of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 import { Post } from '../../models/post.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,12 +20,20 @@ export class PostsListComponent {
   private readonly postsService = inject(PostsService);
   readonly $loading = signal(false);
   readonly skeletons = Array.from({ length: DEFAULT_POSTS_LIMIT });
+  readonly $error = signal(false);
   
   readonly posts$: Observable<Post[]> = defer(() => {
     this.$loading.set(true);
+    this.$error.set(false);
     return this.postsService
       .getPosts()
-      .pipe(finalize(() => this.$loading.set(false)));
+      .pipe(
+        catchError(() => {
+          this.$error.set(true);
+          return of([]);
+        }),
+        finalize(() => this.$loading.set(false))
+      );
   });
 }
 

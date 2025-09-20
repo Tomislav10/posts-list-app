@@ -1,6 +1,9 @@
 @let posts = posts$ | async;
-@if ($loading()) {
-  @for (_ of skeletons; track _) {
+@let loading = $loading();
+@let error = $error();
+
+@if (loading) {
+  @for (_ of skeletons; track $index) {
     <mat-card class="item skeleton" appearance="outlined">
       <div class="row">
         <div>
@@ -10,6 +13,8 @@
       </div>
     </mat-card>
   }
+} @else if (error) {
+  <mat-card appearance="outlined" class="empty error">Failed to load posts. Please try again.</mat-card>
 } @else if (posts?.length) {
   @for (post of posts; track post.id) {
     <mat-card class="item" appearance="outlined" [routerLink]="[post.id]">
