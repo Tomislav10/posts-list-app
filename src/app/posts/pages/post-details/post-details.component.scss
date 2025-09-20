@@ -26,6 +26,9 @@
   color: var(--mat-sys-error);
 }
 
+.skeleton-line {
+  height: 1em;
+}
 .skeleton-line::before {
   content: '';
   display: block;

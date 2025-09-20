@@ -3,8 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Post } from "./models/post.model";
 import { API_BASE_URL } from "../core/tokens";
-
-export const DEFAULT_POSTS_LIMIT = 10;
+import { DEFAULT_POSTS_LIMIT } from './constants';
 
 @Injectable({
   providedIn: 'root'

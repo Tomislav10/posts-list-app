@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { DEFAULT_POSTS_LIMIT, PostsService } from '../../posts.service';
+import { PostsService } from '../../posts.service';
+import { DEFAULT_POSTS_LIMIT } from '../../constants';
 import { Observable, defer, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Post } from '../../models/post.model';

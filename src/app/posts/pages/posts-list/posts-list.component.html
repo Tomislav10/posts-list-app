@@ -14,10 +14,10 @@
     </mat-card>
   }
 } @else if (error) {
-  <mat-card appearance="outlined" class="empty error">Failed to load posts. Please try again.</mat-card>
+  <mat-card role="alert" appearance="outlined" class="empty error">Failed to load posts. Please try again.</mat-card>
 } @else if (posts?.length) {
   @for (post of posts; track post.id) {
-    <mat-card class="item" appearance="outlined" [routerLink]="[post.id]">
+    <mat-card class="item" appearance="outlined" [routerLink]="[post.id]" aria-label="Open {{ post.title }}">
       <div class="row">
         <div>
           <h3 class="title">{{ post.title }}</h3>

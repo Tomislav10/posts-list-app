@@ -12,7 +12,7 @@ import { filter, map, startWith } from 'rxjs/operators';
   standalone: true,
   imports: [RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule],
   templateUrl: './app-layout.component.html',
-  styleUrls: ['./app-layout.component.scss'],
+  styleUrl: './app-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppLayoutComponent {
