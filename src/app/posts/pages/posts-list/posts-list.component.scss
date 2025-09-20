@@ -20,6 +20,16 @@
   }
 }
 
+.skeleton {
+  pointer-events: none;
+}
+
+.skeleton-line {
+  height: 16px;
+  background: color-mix(in oklab, var(--mat-sys-on-surface) 10%, transparent);
+  border-radius: 4px;
+}
+
 .row {
   padding: 10px 30px;
   display: grid;

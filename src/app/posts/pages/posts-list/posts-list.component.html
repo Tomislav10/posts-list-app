@@ -1,5 +1,16 @@
 @let posts = posts$ | async;
-@if (posts?.length) {
+@if ($loading()) {
+  @for (_ of skeletons; track _) {
+    <mat-card class="item skeleton" appearance="outlined">
+      <div class="row">
+        <div>
+          <h3 class="title skeleton-line"></h3>
+          <p class="subtitle skeleton-line"></p>
+        </div>
+      </div>
+    </mat-card>
+  }
+} @else if (posts?.length) {
   @for (post of posts; track post.id) {
     <mat-card class="item" appearance="outlined" [routerLink]="[post.id]">
       <div class="row">

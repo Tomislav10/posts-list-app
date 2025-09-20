@@ -1,6 +1,17 @@
 @let post = post$ | async;
-
-@if (post) {
+@if ($loading()) {
+  <div class="container">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <mat-card-title class="skeleton-line skeleton-title"></mat-card-title>
+        <mat-card-subtitle class="skeleton-line skeleton-subtitle"></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="skeleton-line skeleton-body"></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+} @else if (post) {
   <div class="container">
     <mat-card appearance="outlined" class="card">
       <mat-card-header>

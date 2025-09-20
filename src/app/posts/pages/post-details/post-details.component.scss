@@ -22,4 +22,13 @@
   line-height: 1.6;
 }
 
+.skeleton-line {
+  background: color-mix(in oklab, var(--mat-sys-on-surface) 10%, transparent);
+  border-radius: 4px;
+}
+
+.skeleton-title { height: 24px; width: 60%; }
+.skeleton-subtitle { height: 16px; width: 30%; margin-top: 6px; }
+.skeleton-body { height: 14px; width: 100%; }
+
 

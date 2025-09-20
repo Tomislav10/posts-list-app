@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Post } from "./models/post.model";
 import { API_BASE_URL } from "../core/tokens";
 
-const DEFAULT_POSTS_LIMIT = 10;
+export const DEFAULT_POSTS_LIMIT = 10;
 
 @Injectable({
   providedIn: 'root'
