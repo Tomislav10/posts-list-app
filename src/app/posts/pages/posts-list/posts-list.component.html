@@ -1,1 +1,18 @@
+@let posts = posts$ | async;
+@if (posts?.length) {
+  @for (post of posts; track post.id) {
+    <mat-card class="item" appearance="outlined" [routerLink]="[post.id]">
+      <div class="row">
+        <div>
+          <h3 class="title">{{ post.title }}</h3>
+          <p class="subtitle">{{ post.body }}</p>
+        </div>
+        <mat-icon class="chevron">chevron_right</mat-icon>
+      </div>
+    </mat-card>
+  }
+} @else {
+  <mat-card appearance="outlined" class="empty">No posts</mat-card>
+}
+
 

@@ -1,2 +1,38 @@
+:host {
+  display: block;
+  padding: 70px 30px;
+  max-width: 900px;
+  margin-inline: auto;
+}
 
+.item,
+.empty {
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 120ms ease;
+  &:hover {
+    background-color: color-mix(in oklab, var(--mat-sys-primary) 6%, transparent);
+    transform: translateY(-1px);
+  }
+  &:focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--mat-sys-primary) 40%, transparent);
+    outline-offset: 2px;
+  }
+}
+
+.row {
+  padding: 10px 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 45px;
+}
+
+.title { font-weight: 600; }
+.subtitle {
+  color: var(--mat-sys-on-surface-variant);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
