@@ -21,22 +21,25 @@ export class AppLayoutComponent {
 
   readonly $subtitle = toSignal(
     this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd),
+      filter((e) => e instanceof NavigationEnd),
       startWith(null),
       map(() => {
         let s = this.router.routerState.snapshot.root;
         while (s.firstChild) s = s.firstChild;
         return (s.data?.['subtitle'] as string) ?? 'Posts';
       }),
-    )
+    ),
   );
 
   readonly showBack = toSignal(
     this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd),
+      filter((e) => e instanceof NavigationEnd),
       startWith(null),
-      map(() => this.router.url.startsWith('/posts/') && this.router.url !== '/posts'),
-    )
+      map(
+        () =>
+          this.router.url.startsWith('/posts/') && this.router.url !== '/posts',
+      ),
+    ),
   );
 
   back(): void {
@@ -44,5 +47,3 @@ export class AppLayoutComponent {
     else this.router.navigate(['/posts']);
   }
 }
-
-

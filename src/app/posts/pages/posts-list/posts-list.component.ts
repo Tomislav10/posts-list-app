@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PostsService } from '../../posts.service';
@@ -22,20 +27,16 @@ export class PostsListComponent {
   readonly $loading = signal(false);
   readonly skeletons = Array.from({ length: DEFAULT_POSTS_LIMIT });
   readonly $error = signal(false);
-  
+
   readonly posts$: Observable<Post[]> = defer(() => {
     this.$loading.set(true);
     this.$error.set(false);
-    return this.postsService
-      .getPosts()
-      .pipe(
-        catchError(() => {
-          this.$error.set(true);
-          return of([]);
-        }),
-        finalize(() => this.$loading.set(false))
-      );
+    return this.postsService.getPosts().pipe(
+      catchError(() => {
+        this.$error.set(true);
+        return of([]);
+      }),
+      finalize(() => this.$loading.set(false)),
+    );
   });
 }
-
-

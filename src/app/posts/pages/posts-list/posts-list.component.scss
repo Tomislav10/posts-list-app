@@ -1,6 +1,7 @@
 :host {
   display: block;
   padding: 0 30px;
+  padding-bottom: 15px;
   max-width: 900px;
   margin-inline: auto;
 }
@@ -8,13 +9,20 @@
 .item {
   margin-bottom: 15px;
   cursor: pointer;
-  transition: background-color 160ms ease, transform 120ms ease;
+  transition:
+    background-color 160ms ease,
+    transform 120ms ease;
   &:hover {
-    background-color: color-mix(in oklab, var(--mat-sys-primary) 6%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--mat-sys-primary) 6%,
+      transparent
+    );
     transform: translateY(-1px);
   }
   &:focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--mat-sys-primary) 40%, transparent);
+    outline: 2px solid
+      color-mix(in oklab, var(--mat-sys-primary) 40%, transparent);
     outline-offset: 2px;
   }
 }
@@ -29,9 +37,12 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 45px;
+  margin-bottom: 15px;
 }
 
-.title { font-weight: 600; }
+.title {
+  font-weight: 600;
+}
 .subtitle {
   color: var(--mat-sys-on-surface-variant);
   overflow: hidden;
@@ -49,10 +60,9 @@
 }
 
 .skeleton-line::before {
-  content: '';
+  content: "";
   display: block;
   height: 16px;
   background: color-mix(in oklab, var(--mat-sys-on-surface) 10%, transparent);
   border-radius: 4px;
 }
-

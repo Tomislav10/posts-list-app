@@ -1,8 +1,19 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { switchMap, map, distinctUntilChanged, finalize, catchError } from 'rxjs/operators';
+import {
+  switchMap,
+  map,
+  distinctUntilChanged,
+  finalize,
+  catchError,
+} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Post } from '../../models/post.model';
 import { PostsService } from '../../posts.service';
@@ -22,9 +33,9 @@ export class PostDetailsComponent {
   readonly $error = signal(false);
 
   readonly post$: Observable<Post | null> = this.route.paramMap.pipe(
-    map(params => Number(params.get('id'))),
+    map((params) => Number(params.get('id'))),
     distinctUntilChanged(),
-    switchMap(id => {
+    switchMap((id) => {
       this.$loading.set(true);
       this.$error.set(false);
       return this.postsService.getPost(id).pipe(
@@ -32,10 +43,8 @@ export class PostDetailsComponent {
           this.$error.set(true);
           return of(null);
         }),
-        finalize(() => this.$loading.set(false))
+        finalize(() => this.$loading.set(false)),
       );
     }),
   );
 }
-
-

@@ -1,3 +1,1 @@
 export * from './posts.constants';
-
-
